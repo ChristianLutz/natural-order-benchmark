@@ -1,4 +1,4 @@
-package com.eekboom.utils;
+package naturalsort.friedrich;
 
 
 import static org.junit.Assert.assertEquals;
