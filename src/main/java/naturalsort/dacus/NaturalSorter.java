@@ -20,7 +20,7 @@ public class NaturalSorter {
         return stringList;
     }
 
-    private static class NaturalComparator implements Comparator<String> {
+    public static class NaturalComparator implements Comparator<String> {
         @Override
         public int compare(String o1, String o2) {
             Matcher firstMatcher = pattern.matcher(o1);
