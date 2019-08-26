@@ -1,18 +1,20 @@
 package naturalsort.friedrich;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.Collator;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
-import org.junit.Test;
-
-import naturalsort.friedrich.Strings;
+import org.junit.jupiter.api.Test;
 
 public class StringsTest {
-	
+
 	@Test
     public void testCompareNatural() {
         assertEquals(0, c("", ""));
@@ -42,7 +44,7 @@ public class StringsTest {
     public void testNaturalCompareWhitespace() {
         String[] strings = { "p4", "p  3" };
         List<String> sortedStrings = Arrays.asList(strings);
-        List<String> testStrings = new ArrayList<String>(sortedStrings);
+        List<String> testStrings = new ArrayList<>(sortedStrings);
         for(int i = 0; i < 10; ++i) {
             Collections.shuffle(testStrings);
             Collections.sort(testStrings, Strings.getNaturalComparator());
@@ -98,8 +100,8 @@ public class StringsTest {
                                         "pic02a", "pic3", "pic4", "pic05", "pic100", "pic100a", "pic120", "pic121",
                                         "pic02000", "tom", "x2-g8", "x2-y7", "x2-y08", "x8-y8"};
 
-        List<String> expectedSorted = new ArrayList<String>(Arrays.asList(strings));
-        List<String> actualSorted = new ArrayList<String>(Arrays.asList(strings));
+        List<String> expectedSorted = new ArrayList<>(Arrays.asList(strings));
+        List<String> actualSorted = new ArrayList<>(Arrays.asList(strings));
 
         for(int i = 0; i < 1000; ++i) {
             Collections.shuffle(actualSorted);
@@ -115,7 +117,7 @@ public class StringsTest {
         int maxSubWordCount = 20;
         int maxSubWordLength = 3;
         Random random = new Random();
-        List<String> words = new ArrayList<String>();
+        List<String> words = new ArrayList<>();
         for(int i = 0; i < wordCount; ++i) {
             String word = createRandomWord(random, maxSubWordCount, maxSubWordLength, 0.3);
             words.add(word);
@@ -125,9 +127,9 @@ public class StringsTest {
         double totalTimeDefaultSort = 0.0;
         double totalTimeNaturalSort = 0.0;
         for(int runIndex = 0; runIndex < runCount; ++runIndex) {
-            List<String> defaultSortedWords = new ArrayList<String>(words);
+            List<String> defaultSortedWords = new ArrayList<>(words);
             double timeDefaultSort = timeDefaultSort(defaultSortedWords);
-            List<String> naturalSortedWords = new ArrayList<String>(words);
+            List<String> naturalSortedWords = new ArrayList<>(words);
 
             double timeNaturalSort = timeNaturalSort(naturalSortedWords);
             Collections.shuffle(words);
@@ -142,7 +144,7 @@ public class StringsTest {
         double avgTimeNaturalSort = totalTimeNaturalSort / runCount;
         System.out.println("avgTimeNaturalSort = " + avgTimeNaturalSort);
 
-        assertTrue("Expecting true", avgTimeNaturalSort < 5.0 * avgTimeDefaultSort);
+        assertTrue(avgTimeNaturalSort < 5.0 * avgTimeDefaultSort, "Expecting true");
     }
 
     private double timeDefaultSort(List<String> words) {

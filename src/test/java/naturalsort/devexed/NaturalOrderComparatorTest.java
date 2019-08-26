@@ -1,14 +1,14 @@
 package naturalsort.devexed;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.text.Collator;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
 
 public class NaturalOrderComparatorTest {
 
@@ -33,7 +33,7 @@ public class NaturalOrderComparatorTest {
         String as = "ab   c " + formatDouble(locale, a) + ";;234";
         String bs = "ab  c " +  formatDouble(locale, b) + ";;234   ";
 
-        NaturalOrderComparator<String> comp = new NaturalOrderComparator<String>(collator, new DecimalFormatSymbols(locale));
+        NaturalOrderComparator<String> comp = new NaturalOrderComparator<>(collator, new DecimalFormatSymbols(locale));
         int expectedResult = Double.compare(a, b);
         int compareResult = comp.compare(as, bs);
         assertThat(sign(compareResult), is(sign(expectedResult)));
@@ -68,7 +68,7 @@ public class NaturalOrderComparatorTest {
         }) {
             double million = 1000000;
             String n = formatDouble(locale, randomNumber(-million, million));
-            NaturalOrderComparator<String> comp = new NaturalOrderComparator<String>(locale);
+            NaturalOrderComparator<String> comp = new NaturalOrderComparator<>(locale);
 
             byte[] keyA = comp.normalizeForLookup("abc ".toUpperCase(locale) + n + " hsd".toLowerCase(locale));
             byte[] keyB = comp.normalizeForLookup("abc ".toLowerCase(locale) + n + " hsd".toUpperCase(locale));

@@ -1,4 +1,5 @@
 package naturalsort.paour;
+
 /*
  NaturalOrderComparator.java -- Perform 'natural order' comparisons of strings in Java.
  Copyright (C) 2003 by Pierre-Luc Paour <natorder@paour.com>
@@ -23,15 +24,13 @@ package naturalsort.paour;
  3. This notice may not be removed or altered from any source distribution.
  */
 
-import java.util.*;
+import java.util.Comparator;
 
 public class NaturalOrderComparator implements Comparator<String>
 {
     int compareRight(String a, String b)
     {
-        int bias = 0;
-        int ia = 0;
-        int ib = 0;
+        int bias = 0, ia = 0, ib = 0;
 
         // The longest run of digits wins. That aside, the greatest
         // value wins, but we can't know that it will until we've scanned
@@ -42,108 +41,83 @@ public class NaturalOrderComparator implements Comparator<String>
             char ca = charAt(a, ia);
             char cb = charAt(b, ib);
 
-            if (!Character.isDigit(ca) && !Character.isDigit(cb))
-            {
+            if (!isDigit(ca) && !isDigit(cb)) {
                 return bias;
             }
-            else if (!Character.isDigit(ca))
-            {
+            if (!isDigit(ca)) {
                 return -1;
             }
-            else if (!Character.isDigit(cb))
-            {
+            if (!isDigit(cb)) {
                 return +1;
             }
-            else if (ca < cb)
-            {
-                if (bias == 0)
-                {
-                    bias = -1;
-                }
-            }
-            else if (ca > cb)
-            {
-                if (bias == 0)
-                    bias = +1;
-            }
-            else if (ca == 0 && cb == 0)
-            {
+            if (ca == 0 && cb == 0) {
                 return bias;
+            }
+
+            if (bias == 0) {
+                if (ca < cb) {
+                    bias = -1;
+                } else if (ca > cb) {
+                    bias = +1;
+                }
             }
         }
     }
 
-    public int compare(String o1, String o2)
+    @Override
+    public int compare(String a, String b)
     {
-        String a = o1;
-        String b = o2;
-
         int ia = 0, ib = 0;
         int nza = 0, nzb = 0;
         char ca, cb;
-        int result;
 
-        while (true)
-        {
-            // only count the number of zeroes leading the last number compared
+        while (true) {
+            // Only count the number of zeroes leading the last number compared
             nza = nzb = 0;
 
             ca = charAt(a, ia);
             cb = charAt(b, ib);
 
             // skip over leading spaces or zeros
-            while (Character.isSpaceChar(ca) || ca == '0')
-            {
-                if (ca == '0')
-                {
+            while (Character.isSpaceChar(ca) || ca == '0') {
+                if (ca == '0') {
                     nza++;
-                }
-                else
-                {
-                    // only count consecutive zeroes
+                } else {
+                    // Only count consecutive zeroes
                     nza = 0;
                 }
 
                 ca = charAt(a, ++ia);
             }
 
-            while (Character.isSpaceChar(cb) || cb == '0')
-            {
-                if (cb == '0')
-                {
+            while (Character.isSpaceChar(cb) || cb == '0') {
+                if (cb == '0') {
                     nzb++;
-                }
-                else
-                {
-                    // only count consecutive zeroes
+                } else {
+                    // Only count consecutive zeroes
                     nzb = 0;
                 }
 
                 cb = charAt(b, ++ib);
             }
 
-            // process run of digits
-            if (Character.isDigit(ca) && Character.isDigit(cb))
-            {
-                if ((result = compareRight(a.substring(ia), b.substring(ib))) != 0)
-                {
-                    return result;
+            // Process run of digits
+            if (Character.isDigit(ca) && Character.isDigit(cb)) {
+                int bias = compareRight(a.substring(ia), b.substring(ib));
+                if (bias != 0) {
+                    return bias;
                 }
             }
 
-            if (ca == 0 && cb == 0)
-            {
+            if (ca == 0 && cb == 0) {
                 // The strings compare the same. Perhaps the caller
                 // will want to call strcmp to break the tie.
-                return nza - nzb;
+                return compareEqual(a, b, nza, nzb);
             }
-
-            if (ca < cb)
-            {
+            if (ca < cb) {
                 return -1;
             }
-            else if (ca > cb)
-            {
+            if (ca > cb) {
                 return +1;
             }
 
@@ -152,15 +126,21 @@ public class NaturalOrderComparator implements Comparator<String>
         }
     }
 
-    static char charAt(String s, int i)
-    {
-        if (i >= s.length())
-        {
-            return 0;
-        }
-        else
-        {
-            return s.charAt(i);
-        }
+    static boolean isDigit(char c) {
+        return Character.isDigit(c) || c == '.' || c == ',';
+    }
+
+    static char charAt(String s, int i) {
+        return i >= s.length() ? 0 : s.charAt(i);
+    }
+
+    static int compareEqual(String a, String b, int nza, int nzb) {
+        if (nza - nzb != 0)
+            return nza - nzb;
+
+        if (a.length() == b.length())
+            return a.compareTo(b);
+
+        return a.length() - b.length();
     }
 }
