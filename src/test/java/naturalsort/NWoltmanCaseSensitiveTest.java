@@ -10,11 +10,11 @@ import java.util.Comparator;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.padler.natorder.NaturalOrderComparator;
 
 import naturalsort.dacus.NaturalSorter;
 import naturalsort.davekoelle.AlphanumComparator;
 import naturalsort.friedrich.Strings;
-import naturalsort.paour.NaturalOrderComparator;
 import net.greypanther.natsort.SimpleNaturalComparator;
 
 /**
@@ -33,8 +33,7 @@ public class NWoltmanCaseSensitiveTest {
             new AlphanumComparator(),                            // kolle
             new naturalsort.devexed.NaturalOrderComparator<>(),  // devexed
             Strings.getNaturalComparator(),                      // friedrich
-            new NaturalOrderComparator(),                        // paour
-            new org.padler.natorder.NaturalOrderComparator(),    // padler improved pour
+            new NaturalOrderComparator(),                        // padler improved pour
             Comparator.naturalOrder(),                           // java.util
             SimpleNaturalComparator.getInstance()                // greypanther
         );

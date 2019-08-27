@@ -15,11 +15,11 @@ import java.util.List;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.padler.natorder.NaturalOrderComparator;
 
 import naturalsort.dacus.NaturalSorter;
 import naturalsort.davekoelle.AlphanumComparator;
 import naturalsort.friedrich.Strings;
-import naturalsort.paour.NaturalOrderComparator;
 import net.greypanther.natsort.CaseInsensitiveSimpleNaturalComparator;
 
 /**
@@ -38,8 +38,7 @@ public class NWoltmanCaseInsensitiveTest {
             new AlphanumComparator(),                            // kolle
             new naturalsort.devexed.NaturalOrderComparator<>(),  // devexed
             Strings.getNaturalComparator(),                      // friedrich
-            new NaturalOrderComparator(),                        // paour
-            new org.padler.natorder.NaturalOrderComparator(),    // padler improved pour
+            new NaturalOrderComparator(),                        // padler improved pour
             Comparator.naturalOrder(),                           // java.util
             CaseInsensitiveSimpleNaturalComparator.getInstance() // greypanther
         );
@@ -95,10 +94,15 @@ public class NWoltmanCaseInsensitiveTest {
     @MethodSource( "comparators" )
     public void compareWithZeroInTheString(Comparator<String> ouT) {
         assertThat(ouT.compare("a00", "a000"), lessThan(0));
+        assertThat(ouT.compare("a000", "a00"), greaterThan(0));
         assertThat(ouT.compare("a 0 a", "a 0 b"), lessThan(0));
+        assertThat(ouT.compare("a 0 b", "a 0 a"), greaterThan(0));
         assertThat(ouT.compare("a 0 a", "a 00 b"), lessThan(0));
+        assertThat(ouT.compare("a 00 b", "a 0 a"), greaterThan(0));
         assertThat(ouT.compare("a0a", "a0b"), lessThan(0));
+        assertThat(ouT.compare("a0b", "a0a"), greaterThan(0));
         assertThat(ouT.compare("a0a", "a00b"), lessThan(0));
+        assertThat(ouT.compare("a00b", "a0a"), greaterThan(0));
     }
 
     @ParameterizedTest
