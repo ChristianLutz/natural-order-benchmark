@@ -16,8 +16,6 @@ import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import com.google.common.collect.Ordering;
-
 import naturalsort.dacus.NaturalSorter;
 import naturalsort.davekoelle.AlphanumComparator;
 import naturalsort.friedrich.Strings;
@@ -41,7 +39,8 @@ public class NWoltmanCaseInsensitiveTest {
             new naturalsort.devexed.NaturalOrderComparator<>(),  // devexed
             Strings.getNaturalComparator(),                      // friedrich
             new NaturalOrderComparator(),                        // paour
-            Ordering.natural(),                                  // guava
+            new org.padler.natorder.NaturalOrderComparator(),    // padler improved pour
+            Comparator.naturalOrder(),                           // java.util
             CaseInsensitiveSimpleNaturalComparator.getInstance() // greypanther
         );
     }
