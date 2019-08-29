@@ -24,7 +24,7 @@ The questions are
 
 - berry - [AlphaNumericStringComperator][4]
 - dacus - [NaturalSorter][3]
-- devexed - [][]
+- devexed - [NaturalOrderComparator][14]
 - friedrich - [Strings][6] had been original been posted [here][7] but this side isn't available anymore. But it is still [archived][8] 
 - koelle - [AlphanumComparator][5]
 - padler - [NaturalOrderComparator][2]
