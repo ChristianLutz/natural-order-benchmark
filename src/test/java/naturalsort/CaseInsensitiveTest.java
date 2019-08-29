@@ -18,6 +18,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.padler.natorder.NaturalOrderComparator;
 
+import naturalsort.berry.AlphaNumericStringComparator;
 import naturalsort.dacus.NaturalSorter;
 import naturalsort.friedrich.Strings;
 import naturalsort.koelle.AlphanumComparator;
@@ -35,13 +36,13 @@ public class CaseInsensitiveTest {
 
     public static Collection<Comparator<String>> comparators() {
         return Arrays.asList(
+            new AlphaNumericStringComparator(),                            // berry
             new NaturalSorter.NaturalComparator(),                         // dacus
-            new AlphanumComparator(),                                      // kolle
-            new naturalsort.devexed.NaturalOrderComparator<String>(),      // berry
+            new naturalsort.devexed.NaturalOrderComparator<String>(),      // devexed
             Strings.getNaturalComparatorIgnoreCaseAscii(),                 // friedrich
+            new AlphanumComparator(),                                      // kolle
             new NaturalOrderComparator(),                                  // padler improved pour
-            Comparator.<String>naturalOrder(),                             // java.util
-            CaseInsensitiveSimpleNaturalComparator.<String>getInstance()   // greypanther
+            CaseInsensitiveSimpleNaturalComparator.<String>getInstance()   // panther
         );
     }
 

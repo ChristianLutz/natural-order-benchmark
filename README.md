@@ -22,13 +22,13 @@ The questions are
 
 ### Implementations
 
-- padler - [NaturalOrderComparator][2]
-- dacus - [NaturalSorter][3]
 - berry - [AlphaNumericStringComperator][4]
-- koelle - [AlphanumComparator][5]
+- dacus - [NaturalSorter][3]
+- devexed - [][]
 - friedrich - [Strings][6] had been original been posted [here][7] but this side isn't available anymore. But it is still [archived][8] 
+- koelle - [AlphanumComparator][5]
+- padler - [NaturalOrderComparator][2]
 - panther - [java-nat-sort][9]
-- [Default Java Comparator][10]
 
 ## Features
 
@@ -39,8 +39,8 @@ implementations.
 
 
 
- features| padler | dacus | berry | keolle | friedrich | panther 
----------|--------|-------|-------|--------|-----------|---------
+ features| padler | dacus | devexed | keolle | friedrich | panther 
+---------|--------|-------|---------|--------|-----------|---------
 natural order of numbers | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:
 ignore decimal point | :white_check_mark: | :x: | :x: | :white_check_mark: | :white_check_mark: | :x: 
 local specific decimal point | :x: | :x: | :white_check_mark: | :x: | :x: | :x: 
@@ -72,3 +72,4 @@ The problem with the implemenations are that they are mostly hardcoded and don't
 [11]: https://en.wikipedia.org/wiki/Natural_sort_order
 [12]: https://rosettacode.org/wiki/Natural_sorting
 [13]: https://github.com/nwoltman
+[14]: https://github.com/devexed/natural-sort
