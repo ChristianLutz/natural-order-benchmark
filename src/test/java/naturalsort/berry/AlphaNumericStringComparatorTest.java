@@ -1,4 +1,4 @@
-package naturalsort.simple;
+package naturalsort.berry;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import naturalsort.berry.AlphaNumericStringComparator;
 
 /**
  * To change this template, choose Tools | Templates

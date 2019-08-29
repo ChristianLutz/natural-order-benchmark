@@ -1,4 +1,4 @@
-package naturalsort.simple;
+package naturalsort.berry;
 
 /*
  * Copyright (c) 2007 Eric Berry <elberry@gmail.com>

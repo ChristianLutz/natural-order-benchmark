@@ -20,8 +20,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.padler.natorder.NaturalOrderComparator;
 
 import naturalsort.dacus.NaturalSorter;
-import naturalsort.davekoelle.AlphanumComparator;
 import naturalsort.friedrich.Strings;
+import naturalsort.koelle.AlphanumComparator;
 import net.greypanther.natsort.SimpleNaturalComparator;
 
 public class NumberTest {

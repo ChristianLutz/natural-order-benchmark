@@ -1,4 +1,4 @@
-package naturalsort.davekoelle;
+package naturalsort.koelle;
 
 /*
  * The Alphanum Algorithm is an improved sorting algorithm for strings
