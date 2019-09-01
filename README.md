@@ -41,7 +41,7 @@ implementations.
 
  features| padler | dacus | devexed | keolle | friedrich | panther | berry 
 ---------|--------|-------|---------|--------|-----------|---------|-------
-natural order of numbers | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: 
+natural order of numbers | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: 
 ignore decimal point | :white_check_mark: | :x: | :x: | :white_check_mark: | :white_check_mark: | :x: | :x:
 local specific decimal point | :x: | :x: | :white_check_mark: | :x: | :x: | :x: | :x: 
 handle leading zeros | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: 
