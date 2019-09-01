@@ -39,18 +39,20 @@ implementations.
 
 
 
- features| padler | dacus | devexed | keolle | friedrich | panther 
----------|--------|-------|---------|--------|-----------|---------
-natural order of numbers | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:
-ignore decimal point | :white_check_mark: | :x: | :x: | :white_check_mark: | :white_check_mark: | :x: 
-local specific decimal point | :x: | :x: | :white_check_mark: | :x: | :x: | :x: 
+ features| padler | dacus | devexed | keolle | friedrich | panther | berry 
+---------|--------|-------|---------|--------|-----------|---------|-------
+natural order of numbers | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: 
+ignore decimal point | :white_check_mark: | :x: | :x: | :white_check_mark: | :white_check_mark: | :x: | :x:
+local specific decimal point | :x: | :x: | :white_check_mark: | :x: | :x: | :x: | :x: 
 handle leading zeros | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: 
-large numbers | :white_check_mark: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:
+large numbers | :white_check_mark: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:
 order of negativ numbers | smallest negative number first | smallest negative number first | **largest** negative number first | smallest negative number first | smallest negative number first | smallest negative number first | smallest negative number first 
 | | | | | | | |
-case sensitive | :white_check_mark: | :x: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: 
-case insensitive | :x: | :x: | :white_check_mark: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: 
+case sensitive ASCII | :white_check_mark: | :x: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: 
+case insensitive ASCII | :x: | :x: | :white_check_mark: | :x: | :white_check_mark: | :white_check_mark: | :x:
 ignore leading and trailing whitespaces  | | | | | | | 
+support java.text.Collator  | | | | | | | 
+Unicode support | | | | | | | 
 
 ### Notes
 The problem with the implemenations are that they are mostly hardcoded and don't provide much configuration option. So if you need some specific natural order you may have to stick with one implementation. Or you even need to implement it by your self.
