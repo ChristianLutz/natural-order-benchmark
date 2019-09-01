@@ -78,4 +78,15 @@ public class CaseSensitiveTest {
         Collections.sort(list, ouT);
         assertEquals(testInput, list);
     }
+
+    @ParameterizedTest
+    @DisplayName("Sort numbers before characters with number")
+    @MethodSource( "comparators" )
+    public void sortNumbersBeforeCaseInsensitiveWithNumber(Comparator<String> ouT) {
+        final List<String> testInput = Arrays.asList("1", "2", "100", "A1", "C2", "C12", "a", "b", "b1", "c", "c10");
+        final List<String> list = new ArrayList<>(testInput);
+        Collections.shuffle(list);
+        Collections.sort(list, ouT);
+        assertEquals(testInput, list);
+    }
 }
