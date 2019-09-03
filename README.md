@@ -30,14 +30,13 @@ The questions are
 - padler - [NaturalOrderComparator][2]
 - panther - [java-nat-sort][9]
 
+
 ## Features
 
 To test what features are supported and if they are working well, I created a set of unit tests. 
 The starting point of the tests are the work of [Nathan Woltman][13] he has done for his [string-natural-compare][1].
 Also most of the implementations have a test sets. So I copied them and checked if this set do also work for the other
 implementations.
-
-
 
  features| padler | dacus | devexed | keolle | friedrich | panther | berry 
 ---------|--------|-------|---------|--------|-----------|---------|-------
@@ -57,9 +56,24 @@ Unicode support | | | | | | |
 ### Notes
 The problem with the implemenations are that they are mostly hardcoded and don't provide much configuration option. So if you need some specific natural order you may have to stick with one implementation. Or you even need to implement it by your self.
 
+Dacus has some problems with the order in both cases `case sensitive` and `case insenstive` that is the reason why both are red.
+
+
 ## Performance
 
+The test is based on [JMH][15]. The test string have been created via [EasyRandom][16] with string length between 1 and 100. 
 
+The benchmark is using the comperator within `Collection.sort`. The sort itself has `O(n*log(n))`. This should be the major performance difference. 
+
+To execute the benchmark you first need to build the jar with `mvn clean install -DskipTests` and then run `java -jar target/naturalsort-1.0.0-SNAPSHOT`
+
+ test size| padler | dacus | devexed | keolle | friedrich | panther | berry 
+---------|--------|-------|---------|--------|-----------|---------|-------
+50 | | | | | 824733,078 ±(99.9%) 10198,582 ops/s [Average]
+500 | | | | | 79754,839 ±(99.9%) 1284,614 ops/s [Average]
+5000 | | | | | 3454,815 ±(99.9%) 73,883 ops/s [Average] | 7442,875 ±(99.9%) 185,738 ops/s [Average]
+50000 | | | | | 238,290 ±(99.9%) 6,905 ops/s [Average]
+500000 | | | | | 13,781 ±(99.9%) 2,613 ops/s [Average]
 
 [1]: https://github.com/nwoltman/string-natural-compare
 [2]: https://github.com/616slayer616/natorder
@@ -75,3 +89,5 @@ The problem with the implemenations are that they are mostly hardcoded and don't
 [12]: https://rosettacode.org/wiki/Natural_sorting
 [13]: https://github.com/nwoltman
 [14]: https://github.com/devexed/natural-sort
+[15]: http://openjdk.java.net/projects/code-tools/jmh/
+[16]: https://github.com/j-easy/easy-random
