@@ -69,11 +69,25 @@ To execute the benchmark you first need to build the jar with `mvn clean install
 
  test size| padler | dacus | devexed | keolle | friedrich | panther | berry 
 ---------|--------|-------|---------|--------|-----------|---------|-------
-50 | | | | | 824733,078 ±(99.9%) 10198,582 ops/s [Average]
-500 | | | | | 79754,839 ±(99.9%) 1284,614 ops/s [Average]
-5000 | | | | | 3454,815 ±(99.9%) 73,883 ops/s [Average] | 7442,875 ±(99.9%) 185,738 ops/s [Average]
-50000 | | | | | 238,290 ±(99.9%) 6,905 ops/s [Average]
-500000 | | | | | 13,781 ±(99.9%) 2,613 ops/s [Average]
+50 | 322233,394 ± 23164,234 ops/s | 1669,788 ± 2144,115 ops/s | 65,350 ± 28,982 ops/s | 12639,356 ± 340,300 ops/s | 351708,520 ± 17678,003 ops/s | 379094,168 ± 28208,360 ops/s | 1539,858 ± 194,941 ops/s
+500 | 13363,359 ± 1086,943 ops/s | 92,728 ± 30,003 ops/s | 3,497 ± 0,694 ops/s | 720,988 ± 67,330 ops/s | 13814,737 ± 852,784 ops/s  | 14819,162 ± 1340,082 ops/s | 84,747 ± 0,707 ops/s
+5000 | 785,413 ± 40,206 ops/s | 6,320 ± 3,476 ops/s | 0,246 ± 0,220 ops/s | 48,067 ± 3,274 ops/s | 861,733 ± 18,264 ops/s | 884,419 ± 29,256 ops/s | 5,951 ± 0,240 ops/s
+50000 | 50,611 ± 22,134 ops/s | 0,469 ± 0,026 ops/s | 0,018 ± 0,013 ops/s | 3,595 ± 0,135 ops/s | 54,059 ± 42,570 ops/s | 58,565 ± 4,214 ops/s | 0,443 ± 0,120 ops/s
+500000 | 2,543 ± 0,259 ops/s | 0,037 ± 0,007 ops/s | 0,002 ± 0,001 ops/s | 0,275 ± 0,004 ops/s | 2,930 ± 0,235 ops/s | 3,204 ± 0,229 ops/s | 0,035 ± 0,016 ops/s
+
+JMH Benchmark configuration
+
+```
+# JMH version: 1.21
+# VM version: JDK 11.0.4, OpenJDK 64-Bit Server VM, 11.0.4+11
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 2 iterations, 10 s each
+# Measurement: 3 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+```
 
 [1]: https://github.com/nwoltman/string-natural-compare
 [2]: https://github.com/616slayer616/natorder
