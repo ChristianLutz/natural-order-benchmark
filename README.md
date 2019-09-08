@@ -49,7 +49,7 @@ order of negativ numbers | smallest negative number first | smallest negative nu
 | | | | | | | |
 case sensitive ASCII | :white_check_mark: | :x: | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: 
 case insensitive ASCII | :x: | :x: | :white_check_mark: | :x: | :white_check_mark: | :white_check_mark: | :x:
-ignore leading and trailing whitespaces  | | | | | | | 
+ignore leading and trailing whitespaces  | :x: | :x: | :white_check_mark: | :x: | :x: | :x: | 
 support java.text.Collator  | | | | | | | 
 Unicode support | | | | | | | 
 
